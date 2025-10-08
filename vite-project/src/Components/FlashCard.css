@@ -58,45 +58,76 @@
     }
 }
 
-.flashcard-input {
-    display: block;
-    margin: 15px auto;
-    padding: 10px;
+.guess-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+    gap: 12px;
+}
+
+.guess-input {
+    width: 280px;
+    padding: 10px 14px;
     font-size: 1rem;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 300px;
+    border-radius: 10px;
+    border: 2px solid #ffc107;
+    outline: none;
     text-align: center;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    gap: 12px;
+}
+
+.guess-input:focus {
+    border-color: #ffdb58;
+    box-shadow: 0 0 8px rgba(255, 193, 7, 0.6);
 }
 
 .flashcard-submit {
-    display: block;
-    margin: 10px auto;
-    padding: 8px 16px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    background-color: #007bff;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     color: white;
+    border: 2px solid #ffc107;
+    padding: 10px 18px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: background 0.3s;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
 .flashcard-submit:hover {
-    background-color: #0056b3;
+    background: linear-gradient(135deg, #2a5298, #1e3c72);
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.flashcard-feedback {
-    text-align: center;
-    font-weight: bold;
+.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
     margin-top: 10px;
 }
 
-.flashcard-feedback.correct {
-    color: green;
+.flashcard-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
-.flashcard-feedback.incorrect {
-    color: red;
+.flashcard-submit:hover:not(:disabled) {
+    transform: scale(1.05);
+}
+
+.flashcard-submit {
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 3px solid #ffc107; /* match CardSetInfo border color */
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
 }

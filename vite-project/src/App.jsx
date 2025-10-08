@@ -20,25 +20,40 @@ function App() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isFlipped, setIsFlipped] = useState(false);
 
+    // Go to next card (ordered)
     const handleNext = () => {
-        const randomIndex = Math.floor(Math.random() * cards.length);
-        setCurrentIndex(randomIndex);
-        setIsFlipped(false); // reset flip for new card
+        if (currentIndex < cards.length - 1) {
+            setCurrentIndex(currentIndex + 1);
+            setIsFlipped(false); // reset flip
+        }
+    };
+
+    // Go to previous card (ordered)
+    const handleBack = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex(currentIndex - 1);
+            setIsFlipped(false); // reset flip
+        }
     };
 
     return (
         <div className="App">
             <CardSetInfo />
+
             <FlashCard
                 question={cards[currentIndex].question}
                 answer={cards[currentIndex].answer}
                 isFlipped={isFlipped}
                 setIsFlipped={setIsFlipped}
+                currentIndex={currentIndex}
+                cardsLength={cards.length}
+                handleNext={handleNext}
+                handleBack={handleBack}
             />
-            <button className="next-button" onClick={handleNext}>Next</button>
         </div>
     );
 }
 
 export default App;
+
 
